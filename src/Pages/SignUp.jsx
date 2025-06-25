@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../Provider/Authprovider';
 
 const SignUp = () => {
 
-  const [error, setError]= useState();
- const { user, signUp, setUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [error, setError] = useState();
+  const { user, signUp, setUser, updateUserProfile } = useContext(AuthContext);
 
 
   const handleSignup = (e) => {
@@ -29,26 +30,32 @@ const SignUp = () => {
       setError("Password must have at least one uppercase letter, one lowercase letter, and be at least 6 characters long.")
       return;
     }
-  
+
     signUp(email, password)
       .then((result) => {
         const user = result.user;
         updateUserProfile({ displayName: name, photoURL: image })
-    
+
           .then(() => {
             // axiosPublic.post('/users', userData)
-              // .then(res => {
-              //   if (res.data.insertedId) {
-              //     console.log('add to database', res.data)
-              //     setUser({ ...user, displayName: name, photoURL: image });
-              //     navigate("/");
-              //     Swal.fire({
-              //       title: "Registration Successfully!",
-              //       icon: "success",
-              //       draggable: true
-              //     });
-              //   }
-              // })
+            // .then(res => {
+            //   if (res.data.insertedId) {
+            //     console.log('add to database', res.data)
+            //     setUser({ ...user, displayName: name, photoURL: image });
+            //     navigate("/");
+            //     Swal.fire({
+            //       title: "Registration Successfully!",
+            //       icon: "success",
+            //       draggable: true
+            //     });
+            //   }
+            // })
+            navigate("/");
+            Swal.fire({
+              title: "Registration Successfully!",
+              icon: "success",
+              draggable: true
+            });
           })
           .catch((error) => {
             console.log(error);
@@ -107,7 +114,7 @@ const SignUp = () => {
               Create Account
             </button>
           </form>
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <p className="text-red-500 text-sm">{error}</p>}
           <p className="text-center mt-4 text-sm">
             Already registered?{" "}
             <Link to="/signin" className="text-orange-500 font-semibold hover:underline">
