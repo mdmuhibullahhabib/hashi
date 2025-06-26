@@ -6,6 +6,9 @@ import DoctorProfile from '../Pages/DoctorProfile';
 import SignIn from '../Pages/SignIn';
 import SignUp from '../Pages/SIgnUp';
 import Appointment from '../Pages/Appointment';
+import About from '../Pages/About';
+import Reviews from '../Pages/Reviews';
+import Contact from '../Pages/Contact';
 
 
 const Router = createBrowserRouter ([
@@ -18,7 +21,7 @@ const Router = createBrowserRouter ([
                 element : <Home></Home>
             },
             {
-                path : "/doctor-profile",
+                path : "/doctor-profile/:id",
                 element : <DoctorProfile></DoctorProfile>
             },
             {
@@ -32,6 +35,18 @@ const Router = createBrowserRouter ([
             {
                 path : "/appointment",
                 element : <Appointment></Appointment>
+            },
+            {
+                path : "/about",
+                element : <About></About>
+            },
+            {
+                path : "/reviews",
+                element : <Reviews></Reviews>
+            },
+            {
+                path : "/contact",
+                element : <Contact></Contact>
             },
         ]
     }

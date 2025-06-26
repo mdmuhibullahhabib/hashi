@@ -10,6 +10,7 @@
 import React, { useState } from 'react';
 import Navbar from '../Components/Navbar';
 import Calendar from '../Components/calendar';
+import Header from '../Components/Header';
 
 const services = [
     {
@@ -78,13 +79,10 @@ const Appointment = () => {
     return (
 
         <div className="">
-            <div className="bg-[#013c36] text-white py-12 px-6">
-                <Navbar></Navbar>
-                <div className="max-w-6xl mx-auto mt-10">
-                    <h2 className="text-xl">Home / Appointment</h2>
-                    <h1 className="text-4xl font-bold mt-2">Appointment</h1>
-                </div>
-            </div>
+            <Header
+            maps={"Appointment"}
+            name={"Appointment"}
+            ></Header>
             <div className="max-w-7xl mx-auto px-4 py-10 font-sans">
                 {/* Calendar + Image Section */}
                 <div className="grid md:grid-cols-2 gap-6 mb-10">
