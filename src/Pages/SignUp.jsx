@@ -37,25 +37,19 @@ const SignUp = () => {
         updateUserProfile({ displayName: name, photoURL: image })
 
           .then(() => {
-            // axiosPublic.post('/users', userData)
-            // .then(res => {
-            //   if (res.data.insertedId) {
-            //     console.log('add to database', res.data)
-            //     setUser({ ...user, displayName: name, photoURL: image });
-            //     navigate("/");
-            //     Swal.fire({
-            //       title: "Registration Successfully!",
-            //       icon: "success",
-            //       draggable: true
-            //     });
-            //   }
-            // })
-            navigate("/");
-            Swal.fire({
-              title: "Registration Successfully!",
-              icon: "success",
-              draggable: true
-            });
+            axiosPublic.post('/users', userData)
+            .then(res => {
+              if (res.data.insertedId) {
+                console.log('add to database', res.data)
+                setUser({ ...user, displayName: name, photoURL: image });
+                navigate("/");
+                Swal.fire({
+                  title: "Registration Successfully!",
+                  icon: "success",
+                  draggable: true
+                });
+              }
+            })
           })
           .catch((error) => {
             console.log(error);
