@@ -15,7 +15,7 @@ import Header from '../Components/Header';
 const services = [
     {
         name: 'Teeth Orthodontics',
-        icon: 'https://i.ibb.co/yXJ9Dr9/001-dental.png',
+        icon: 'https://i.ibb.co/srGqtff/IMG-20250627-WA0005.jpg',
         packages: [
             { name: 'Teeth Orthodontics', time: '8:00 AM - 9:00 AM' },
             { name: 'Teeth Orthodontics', time: '4:00 PM - 5:00 PM' },
@@ -23,35 +23,35 @@ const services = [
     },
     {
         name: 'Cosmetic Dentistry',
-        icon: 'https://i.ibb.co/GH7XLvT/002-cosmetic.png',
+        icon: 'https://i.ibb.co/jkWX7Bfs/1000032395.jpg',
         packages: [
             { name: 'Cosmetic Dentistry', time: '10:00 AM - 11:00 AM' },
         ],
     },
     {
         name: 'Teeth Cleaning',
-        icon: 'https://i.ibb.co/wCnHznK/003-cleaning.png',
+        icon: 'https://i.ibb.co/JjXL3bZm/1000032389.jpg',
         packages: [
             { name: 'Teeth Cleaning', time: '2:00 PM - 3:00 PM' },
         ],
     },
     {
         name: 'Cavity Protection',
-        icon: 'https://i.ibb.co/k54v1Np/fluoride.png',
+        icon: 'https://i.ibb.co/RpW5H8dY/1000032398.jpg',
         packages: [
             { name: 'Basic Protection', time: '9:00 AM - 10:00 AM' },
         ],
     },
     {
         name: 'Pediatric Dental',
-        icon: 'https://i.ibb.co/7WhbkZc/pediatric.png',
+        icon: 'https://i.ibb.co/sdvr1z4V/1000032404.jpg',
         packages: [
             { name: 'Child Care', time: '11:00 AM - 12:00 PM' },
         ],
     },
     {
         name: 'Oral Surgery',
-        icon: 'https://i.ibb.co/g7skD6t/whitening.png',
+        icon: 'https://i.ibb.co/8gcRhm5x/1000032402.jpg',
         packages: [
             { name: 'Tooth Extraction', time: '1:00 PM - 2:00 PM' },
         ],
