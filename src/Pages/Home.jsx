@@ -1,6 +1,5 @@
 import React from 'react'
 import Banner from '../Components/Banner'
-import Footer from '../Components/Footer'
 import Doctors from '../Components/Home/Doctors'
 import Testimonials from '../Components/Home/Testimonials'
 import OurServices from '../Components/Home/OurServices'

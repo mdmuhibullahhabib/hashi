@@ -2,9 +2,12 @@ import React, { useContext } from 'react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../Provider/Authprovider';
+import useAxiosPublic from '../hooks/useAxiosPublic';
+
 
 const SignUp = () => {
 
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const [error, setError] = useState();
   const { user, signUp, setUser, updateUserProfile } = useContext(AuthContext);

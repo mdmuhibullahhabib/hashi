@@ -9,6 +9,12 @@ import Appointment from '../Pages/Appointment';
 import About from '../Pages/About';
 import Reviews from '../Pages/Reviews';
 import Contact from '../Pages/Contact';
+import Dashboard from '../Layouts/Dashboard';
+import AddDoctor from '../Pages/Admin/AddDoctor';
+import AdminDashboard from '../Pages/Admin/Dashboard';
+import ManageDoctor from '../Pages/Admin/ManageDoctor';
+import AllUsers from '../Pages/Admin/AllUsers';
+// import Dashboard from '../Pages/Dashboard';
 
 
 const Router = createBrowserRouter ([
@@ -47,6 +53,26 @@ const Router = createBrowserRouter ([
             {
                 path : "/contact",
                 element : <Contact></Contact>
+            },
+            {
+                path : "/dashboard",
+                element : <Dashboard></Dashboard>
+            },
+            {
+                path : "/all-users",
+                element : <AllUsers></AllUsers>
+            },
+            {
+                path : "/manage-doctors",
+                element : <ManageDoctor></ManageDoctor>
+            },
+            {
+                path : "/add-doctor",
+                element : <AddDoctor></AddDoctor>
+            },
+            {
+                path : "/dashboard/admin-dashboard",
+                element : <AdminDashboard></AdminDashboard>
             },
         ]
     }
