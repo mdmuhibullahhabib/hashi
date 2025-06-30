@@ -6,7 +6,6 @@ import { AuthContext } from '../Provider/Authprovider';
 // import { AuthContext } from '../Provider/Authprovider';
 
 const Navbar = () => {
-  // Dummy user state for demo. Replace with actual auth state
   // const [user, setUser] = useState();
   const { user, logOut } = useContext(AuthContext);
 
