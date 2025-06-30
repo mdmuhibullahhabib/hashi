@@ -9,14 +9,14 @@ const Dashboard = () => {
 //   const [isRole] = useRole();
 //   console.log(isRole)
 
-const isRole = 'admin'
+// const isRole = 'admin'
+const isRole = 'user'
   
   return (
     <div className="flex">
 
       {/* Sidebar */}
       <aside className="w-64 min-h-screen bg-base-200 p-4">
-        {/* <h2 className="text-xl font-bold mb-4">Tourist Dashboard</h2> */}
         <nav className="space-y-2">
           {
             isRole === 'admin' ? <>
@@ -38,25 +38,12 @@ const isRole = 'admin'
                 All Users
               </NavLink>
             </> : <>
-              <h2 className="text-xl font-bold mb-4">Tourist Dashboard</h2>
-              <NavLink to="/dashboard/profile" className="btn btn-ghost justify-start gap-2 w-full">
-                <FaUser className="text-lg" /> Manage Profile
+              <h2 className="text-xl font-bold mb-4">Dashboard</h2>
+              <NavLink to="/dashboard/my-appointment" className="btn btn-ghost justify-start gap-2 w-full">
+                <FaSuitcase className="text-lg" /> My Appointment
               </NavLink>
-
-              <NavLink to="/dashboard/bookings" className="btn btn-ghost justify-start gap-2 w-full">
-                <FaSuitcase className="text-lg" /> My Bookings
-              </NavLink>
-
-              <NavLink to="/dashboard/manage-stories" className="btn btn-ghost justify-start gap-2 w-full">
-                <FaPen className="text-lg" /> Manage Stories
-              </NavLink>
-
-              <NavLink to="/dashboard/add-story" className="btn btn-ghost justify-start gap-2 w-full">
-                <FaPlusCircle className="text-lg" /> Add Stories
-              </NavLink>
-
-              <NavLink to="/dashboard/join-guide" className="btn btn-ghost justify-start gap-2 w-full">
-                <FaUserTie className="text-lg" /> Join as Tour Guide
+              <NavLink to="/dashboard/my-reviews" className="btn btn-ghost justify-start gap-2 w-full">
+                <FaPlusCircle className="text-lg" /> My Review
               </NavLink>
             </>
           }

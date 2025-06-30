@@ -10,7 +10,7 @@ const dummyAppointments = [
     { id: 5, name: 'Jane Smith', service: 'Root Canal', time: '10.00 AM - 10.30 AM', date: '2022-05-11' },
 ];
 
-const UserDashboard = () => {
+const MyAppointment = () => {
     const [selectedDate, setSelectedDate] = useState(new Date('2022-05-10'));
 
     const formattedDate = selectedDate.toISOString().split('T')[0];
@@ -20,10 +20,6 @@ const UserDashboard = () => {
 
     return (
         <div className="min-h-screen flex">
-            {/* Sidebar */}
-            <aside className="w-48 bg-white border-r p-4 text-sm text-gray-700">
-                My Appointments
-            </aside>
 
             <main className="flex-1 bg-gray-50">
                 {/* Content */}
@@ -74,4 +70,4 @@ const UserDashboard = () => {
     );
 };
 
-export default UserDashboard;
+export default MyAppointment;

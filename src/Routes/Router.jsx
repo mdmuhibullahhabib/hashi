@@ -14,8 +14,8 @@ import AddDoctor from '../Pages/Admin/AddDoctor';
 import AdminDashboard from '../Pages/Admin/Dashboard';
 import ManageDoctor from '../Pages/Admin/ManageDoctor';
 import AllUsers from '../Pages/Admin/AllUsers';
-import UserDashboard from '../Pages/UserDashboard';
-// import Dashboard from '../Pages/Dashboard';
+import MyAppointment from '../Pages/User/MyAppointment';
+import MyReviews from '../Pages/User/MyReviews';
 
 
 const Router = createBrowserRouter([
@@ -78,13 +78,17 @@ const Router = createBrowserRouter([
                 path: "/dashboard/admin-dashboard",
                 element: <AdminDashboard></AdminDashboard>
             },
+            // user
             {
-                path: "/dashboard/user-dashboard",
-                element: <UserDashboard></UserDashboard>
+                path: "/dashboard/my-appointment",
+                element: <MyAppointment></MyAppointment>
+            },
+            {
+                path: "/dashboard/my-reviews",
+                element: <MyReviews></MyReviews>
             },
         ]
     },
-
 ])
 
 export default Router;

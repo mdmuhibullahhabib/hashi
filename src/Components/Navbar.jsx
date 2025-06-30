@@ -10,6 +10,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   console.log(user)
+  const useRole = 'user'
   
   const handleLogout = () => {
     logOut()
@@ -51,7 +52,13 @@ const Navbar = () => {
                   <span className="font-semibold">{user?.displayName}</span>
                   <p className="text-sm text-gray-500">{user?.email}</p>
                 </li>
-                <li><Link to="/dashboard">Dashboard</Link></li>
+                {
+                    isRole === 'admin' ? <>
+                      <li><Link to="/dashboard/admin-profile">Dashboard</Link></li>
+                    </> : <>
+                      <li><Link to="/dashboard/profile">Dashboard</Link></li>
+                    </>
+                  }
                 <li><button onClick={handleLogout}>Logout</button></li>
               </ul>
             </div>
