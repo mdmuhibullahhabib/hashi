@@ -38,17 +38,15 @@ const MyReviews = () => {
 
     const handleSubmit = async () => {
         if (!newReview.trim()) return;
-        try {
-            const response = await axios.post("https://your-backend-url.com/api/reviews", {
+            const response = await axios.post("http://localhost:5000/reviews", {
                 review: newReview,
                 date: new Date().toISOString(),
             });
             setReviews([...reviews, response.data]);
             setNewReview("");
             setOpen(false);
-        } catch (err) {
-            console.error("Failed to submit review:", err);
-        }
+            console.log(response)
+
     };
 
     return (
