@@ -49,18 +49,6 @@ const Authprovider = ({ children }) => {
     signInWithGoogle
   }  
 
-    // observer section
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //     console.log(currentUser)
-  //     setLoading(false)
-  //   })
-  //   return () => {
-  //     unsubscribe
-  //   }
-  // }, [])
-
   useEffect (()=>{
    const unsubscribe= onAuthStateChanged(auth, (currentUser) =>{
       // setUser(currentUser);
