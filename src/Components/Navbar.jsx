@@ -10,7 +10,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   console.log(user)
-  const useRole = 'user'
+const isRole = 'user'
   
   const handleLogout = () => {
     logOut()
@@ -54,9 +54,9 @@ const Navbar = () => {
                 </li>
                 {
                     isRole === 'admin' ? <>
-                      <li><Link to="/dashboard/admin-profile">Dashboard</Link></li>
+                      <li><Link to="/dashboard/admin-dashboard">Dashboard</Link></li>
                     </> : <>
-                      <li><Link to="/dashboard/profile">Dashboard</Link></li>
+                      <li><Link to="/dashboard/my-appointment">Dashboard</Link></li>
                     </>
                   }
                 <li><button onClick={handleLogout}>Logout</button></li>
