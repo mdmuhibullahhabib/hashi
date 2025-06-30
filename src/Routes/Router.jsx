@@ -14,6 +14,7 @@ import AddDoctor from '../Pages/Admin/AddDoctor';
 import AdminDashboard from '../Pages/Admin/Dashboard';
 import ManageDoctor from '../Pages/Admin/ManageDoctor';
 import AllUsers from '../Pages/Admin/AllUsers';
+import UserDashboard from '../Pages/UserDashboard';
 // import Dashboard from '../Pages/Dashboard';
 
 
@@ -60,6 +61,7 @@ const Router = createBrowserRouter([
         path: "/dashboard",
         element: <Dashboard></Dashboard>,
         children: [
+            // admin
             {
                 path: "/dashboard/all-users",
                 element: <AllUsers></AllUsers>
@@ -75,6 +77,10 @@ const Router = createBrowserRouter([
             {
                 path: "/dashboard/admin-dashboard",
                 element: <AdminDashboard></AdminDashboard>
+            },
+            {
+                path: "/dashboard/user-dashboard",
+                element: <UserDashboard></UserDashboard>
             },
         ]
     },

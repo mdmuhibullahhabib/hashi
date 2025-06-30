@@ -10,7 +10,7 @@ const dummyAppointments = [
     { id: 5, name: 'Jane Smith', service: 'Root Canal', time: '10.00 AM - 10.30 AM', date: '2022-05-11' },
 ];
 
-const Dashboard = () => {
+const UserDashboard = () => {
     const [selectedDate, setSelectedDate] = useState(new Date('2022-05-10'));
 
     const formattedDate = selectedDate.toISOString().split('T')[0];
@@ -74,4 +74,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default UserDashboard;
