@@ -17,65 +17,67 @@ import AllUsers from '../Pages/Admin/AllUsers';
 // import Dashboard from '../Pages/Dashboard';
 
 
-const Router = createBrowserRouter ([
+const Router = createBrowserRouter([
     {
-        path : "/",
-        element : <Main></Main>,
-        children : [
+        path: "/",
+        element: <Main></Main>,
+        children: [
             {
-                path : "/",
-                element : <Home></Home>
+                path: "/",
+                element: <Home></Home>
             },
             {
-                path : "/doctor-profile/:id",
-                element : <DoctorProfile></DoctorProfile>
+                path: "/doctor-profile/:id",
+                element: <DoctorProfile></DoctorProfile>
             },
             {
-                path : "/signup",
-                element : <SignUp></SignUp>
+                path: "/signup",
+                element: <SignUp></SignUp>
             },
             {
-                path : "/signin",
-                element : <SignIn></SignIn>
+                path: "/signin",
+                element: <SignIn></SignIn>
             },
             {
-                path : "/appointment",
-                element : <Appointment></Appointment>
+                path: "/appointment",
+                element: <Appointment></Appointment>
             },
             {
-                path : "/about",
-                element : <About></About>
+                path: "/about",
+                element: <About></About>
             },
             {
-                path : "/reviews",
-                element : <Reviews></Reviews>
+                path: "/reviews",
+                element: <Reviews></Reviews>
             },
             {
-                path : "/contact",
-                element : <Contact></Contact>
-            },
-            {
-                path : "/dashboard",
-                element : <Dashboard></Dashboard>
-            },
-            {
-                path : "/all-users",
-                element : <AllUsers></AllUsers>
-            },
-            {
-                path : "/manage-doctors",
-                element : <ManageDoctor></ManageDoctor>
-            },
-            {
-                path : "/add-doctor",
-                element : <AddDoctor></AddDoctor>
-            },
-            {
-                path : "/dashboard/admin-dashboard",
-                element : <AdminDashboard></AdminDashboard>
+                path: "/contact",
+                element: <Contact></Contact>
             },
         ]
-    }
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: "/dashboard/all-users",
+                element: <AllUsers></AllUsers>
+            },
+            {
+                path: "/dashboard/manage-doctors",
+                element: <ManageDoctor></ManageDoctor>
+            },
+            {
+                path: "/dashboard/add-doctor",
+                element: <AddDoctor></AddDoctor>
+            },
+            {
+                path: "/dashboard/admin-dashboard",
+                element: <AdminDashboard></AdminDashboard>
+            },
+        ]
+    },
 
 ])
 
