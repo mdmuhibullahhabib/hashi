@@ -38,7 +38,7 @@ const MyReviews = () => {
 
     const handleSubmit = async () => {
         if (!newReview.trim()) return;
-            const response = await axios.post("http://localhost:5000/reviews", {
+            const response = await axios.post("https://doc-house-server-weld.vercel.app/reviews", {
                 review: newReview,
                 date: new Date().toISOString(),
             });

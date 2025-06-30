@@ -2,7 +2,7 @@ import axios from 'axios'
 import React from 'react'
 
  const axiosPublic = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://doc-house-server-weld.vercel.app'
 })
 
 const useAxiosPublic = () => {

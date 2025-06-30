@@ -2,14 +2,12 @@ import axios from "axios";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/Authprovider";
-// import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://doc-house-server-weld.vercel.app'
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();
-    // const { logOut } = useAuth();
     const { logOut } = useContext(AuthContext)
 
     // request interceptor to add authorization header for every secure call to teh api
