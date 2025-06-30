@@ -1,16 +1,12 @@
 import React from 'react'
 import { Outlet, NavLink } from 'react-router-dom';
 import { FaUserCog, FaTasks, FaUsers, FaUser, FaSuitcase, FaPen, FaPlusCircle, FaUserTie} from 'react-icons/fa';
-// import useRole from '../hooks/useRole';
-
+import useRole from '../hooks/useRole';
 
 const Dashboard = () => {
 
-//   const [isRole] = useRole();
-//   console.log(isRole)
-
-// const isRole = 'admin'
-const isRole = 'user'
+const [isRole] = useRole();
+console.log(isRole)
   
   return (
     <div className="flex">

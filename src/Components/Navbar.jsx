@@ -3,14 +3,13 @@ import { FaTooth } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { AuthContext } from '../Provider/Authprovider';
-// import { AuthContext } from '../Provider/Authprovider';
+import useRole from '../hooks/useRole';
 
 const Navbar = () => {
-  // const [user, setUser] = useState();
   const { user, logOut } = useContext(AuthContext);
 
   console.log(user)
-const isRole = 'user'
+const [isRole] = useRole()
   
   const handleLogout = () => {
     logOut()

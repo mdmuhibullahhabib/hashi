@@ -21,7 +21,6 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
     });
 
-
     // intercepts 401 and 403 status
     axiosSecure.interceptors.response.use(function (response) {
         return response;
@@ -31,11 +30,10 @@ const useAxiosSecure = () => {
         // for 401 or 403 logout the user and move the user to the login
         if (status === 401 || status === 403) {
             await logOut();
-            navigate('/login');
+            navigate('/');
         }
         return Promise.reject(error);
     })
-
 
     return axiosSecure;
 };

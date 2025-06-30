@@ -5,7 +5,6 @@ import useDoctor from '../../hooks/useDoctor';
 
 const Doctors = () => {
   const [ doctors, refetch ] = useDoctor();
-  console.log(doctors)
 
   return (
     <section className="py-16 px-6 bg-base-100 text-center">
