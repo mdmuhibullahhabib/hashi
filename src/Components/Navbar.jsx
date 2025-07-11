@@ -26,7 +26,7 @@ const [isRole] = useRole()
           </Link>
         </div>
 
-        {/* Des */}
+        {/* De */}
         <div className="hidden md:flex items-center gap-6">
           <Link to="/" className="hover:text-orange-400">Home</Link>
           <Link to="/about" className="hover:text-orange-400">About</Link>
