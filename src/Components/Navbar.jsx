@@ -8,7 +8,7 @@ import useRole from '../hooks/useRole';
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
-  co
+  c
 const [isRole] = useRole()
   
   const handleLogout = () => {
