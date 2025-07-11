@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react'
 import { FaTooth } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
