@@ -1,8 +1,12 @@
 import React from 'react';
 import { FiUsers, FiUser, FiFileText } from 'react-icons/fi';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import useUser from '../../hooks/useUser';
+import useDoctor from '../../hooks/useDoctor';
 
 const AdminDashboard = () => {
+  const [users] = useUser()
+  const [doctors] = useDoctor()
   // Sample data for the charts
   const patientData = [
     { name: '2013', value: 70 },

@@ -1,16 +1,9 @@
-// <div className="bg-[#013c36] text-white py-12 px-6">
-//     <Navbar></Navbar>
-//     <div className="max-w-6xl mx-auto mt-10">
-//         <h2 className="text-xl">Home / Appointment</h2>
-//         <h1 className="text-4xl font-bold mt-2">Appointment</h1>
-//     </div>
-// </div>
-
-
 import React, { useState } from 'react';
-import Navbar from '../Components/Navbar';
+import axios from 'axios';
 import Calendar from '../Components/calendar';
 import Header from '../Components/Header';
+import useAxiosPublic from '../hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
 
 const services = [
     {
@@ -58,12 +51,12 @@ const services = [
     },
 ];
 
-
-
 const Appointment = () => {
+    const axiosPublic = useAxiosPublic();
     const [selectedService, setSelectedService] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedPackage, setSelectedPackage] = useState(null);
+    const [bookingInfo, setBookingInfo] = useState({ name: '', phone: '', email: '' });
 
     const todayStr = new Date().toDateString();
 
@@ -76,22 +69,40 @@ const Appointment = () => {
         setModalOpen(true);
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const appointment = {
+            service: selectedService.name,
+            slot: selectedPackage.time,
+            date: todayStr,
+            patientName: bookingInfo.name,
+            phone: bookingInfo.phone,
+            email: bookingInfo.email,
+            status: 'pending'
+        };
+
+        const res = await axiosPublic.post('/appointment', appointment);
+        if (res.data.insertedId) {
+            Swal.fire({
+                title: "Registration Successfully!",
+                icon: "success",
+                draggable: true
+            });
+            setModalOpen(false);
+            setBookingInfo({ name: '', phone: '', email: '' });
+        }
+
+    };
+
     return (
-
         <div className="">
-            <Header
-            maps={"Appointment"}
-            name={"Appointment"}
-            ></Header>
+            <Header maps="Appointment" name="Appointment" />
             <div className="max-w-7xl mx-auto px-4 py-10 font-sans">
-                {/* Calendar + Image Section */}
                 <div className="grid md:grid-cols-2 gap-6 mb-10">
-                    {/* Calendar */}
                     <div className="bg-white p-6 pt-14">
-                        <Calendar></Calendar>
+                        <Calendar />
                     </div>
-
-                    {/* Image */}
                     <div className="rounded-xl overflow-hidden shadow">
                         <img
                             src="https://i.ibb.co/SwdL7B1Z/full-equiped-medical-cabinet.jpg"
@@ -101,17 +112,14 @@ const Appointment = () => {
                     </div>
                 </div>
 
-                {/* Title */}
-                <p className="text-sm text-center text-pink-400 mb-1">Available Services on April 23, 2025</p>
+                <p className="text-sm text-center text-pink-400 mb-1">Available Services on {todayStr}</p>
                 <h2 className="text-center text-xl font-bold mb-8">Please select a service</h2>
 
-                {/* Service Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-10">
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className={`bg-white rounded-xl p-5 shadow hover:shadow-md transition cursor-pointer text-center ${selectedService?.name === service.name ? 'border-2 border-pink-500' : ''
-                                }`}
+                            className={`bg-white rounded-xl p-5 shadow hover:shadow-md transition cursor-pointer text-center ${selectedService?.name === service.name ? 'border-2 border-pink-500' : ''}`}
                             onClick={() => handleServiceClick(service)}
                         >
                             <img src={service.icon} alt={service.name} className="w-10 h-10 mx-auto mb-4" />
@@ -120,13 +128,11 @@ const Appointment = () => {
                     ))}
                 </div>
 
-                {/* Package Cards */}
                 {selectedService && (
                     <div>
                         <h3 className="text-center text-lg font-bold mb-6">
                             Available slots for {selectedService.name}
                         </h3>
-
                         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
                             {selectedService.packages.map((pkg, i) => (
                                 <div
@@ -135,7 +141,10 @@ const Appointment = () => {
                                 >
                                     <h4 className="text-base font-semibold mb-1">{pkg.name}</h4>
                                     <p className="text-sm text-gray-500 mb-3">{pkg.time}</p>
-                                    <button onClick={() => handleBookClick(pkg)} className="btn btn-sm bg-pink-500 text-white hover:bg-pink-600">
+                                    <button
+                                        onClick={() => handleBookClick(pkg)}
+                                        className="btn btn-sm bg-pink-500 text-white hover:bg-pink-600"
+                                    >
                                         Book Appointment
                                     </button>
                                 </div>
@@ -145,7 +154,6 @@ const Appointment = () => {
                 )}
             </div>
 
-            {/* Modal */}
             {modalOpen && selectedPackage && (
                 <dialog className="modal modal-open">
                     <div className="modal-box relative">
@@ -156,33 +164,29 @@ const Appointment = () => {
                             ✕
                         </button>
                         <h3 className="font-bold text-lg mb-4">{selectedService?.name}</h3>
-                        <form className="space-y-3">
-                            <input
-                                type="text"
-                                defaultValue={todayStr}
-                                disabled
-                                className="input input-bordered w-full"
-                            />
-                            <input
-                                type="text"
-                                defaultValue={selectedPackage.time}
-                                disabled
-                                className="input input-bordered w-full"
-                            />
+                        <form className="space-y-3" onSubmit={handleSubmit}>
+                            <input type="text" value={todayStr} disabled className="input input-bordered w-full" />
+                            <input type="text" value={selectedPackage.time} disabled className="input input-bordered w-full" />
                             <input
                                 type="text"
                                 placeholder="Full Name"
                                 className="input input-bordered w-full"
+                                value={bookingInfo.name}
+                                onChange={(e) => setBookingInfo({ ...bookingInfo, name: e.target.value })}
                             />
                             <input
                                 type="tel"
                                 placeholder="Phone Number"
                                 className="input input-bordered w-full"
+                                value={bookingInfo.phone}
+                                onChange={(e) => setBookingInfo({ ...bookingInfo, phone: e.target.value })}
                             />
                             <input
                                 type="email"
                                 placeholder="Email"
                                 className="input input-bordered w-full"
+                                value={bookingInfo.email}
+                                onChange={(e) => setBookingInfo({ ...bookingInfo, email: e.target.value })}
                             />
                             <div className="text-center">
                                 <button
@@ -199,6 +203,5 @@ const Appointment = () => {
         </div>
     );
 };
-
 
 export default Appointment;
