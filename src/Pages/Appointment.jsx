@@ -94,7 +94,7 @@ const Appointment = () => {
                     {/* Image */}
                     <div className="rounded-xl overflow-hidden shadow">
                         <img
-                            src="https://i.ibb.co/WtqkrM2/dental-chair.jpg"
+                            src="https://i.ibb.co/SwdL7B1Z/full-equiped-medical-cabinet.jpg"
                             alt="Dental Chair"
                             className="w-full h-[500px] object-cover"
                         />

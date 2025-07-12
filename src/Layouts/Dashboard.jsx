@@ -17,22 +17,74 @@ console.log(isRole)
           {
             isRole === 'admin' ? <>
               <h2 className="text-xl font-bold mb-4">Admin Dashboard</h2>
-              <NavLink to="/dashboard/admin-dashboard" className="flex items-center gap-2 w-full btn btn-outline">
-                <FaUserCog />
-                Dashboard
-              </NavLink>
-              <NavLink to="/dashboard/manage-doctors" className="flex items-center gap-2 w-full btn btn-outline">
-                <FaTasks />
-                Manage Doctors
-              </NavLink>
-              <NavLink to="/dashboard/add-doctor" className="flex items-center gap-2 w-full btn btn-outline">
-                <FaPlusCircle />
-                Add Doctor
-              </NavLink>
-              <NavLink to="/dashboard/all-users" className="flex items-center gap-2 w-full btn btn-outline">
-                <FaUsers />
-                All Users
-              </NavLink>
+      <nav className="space-y-4 mb-8">
+        <NavLink
+          to="/dashboard/admin-dashboard"
+          className={({ isActive }) =>
+            `flex items-center gap-2 w-full btn btn-outline ${isActive ? 'btn-primary ' : ''}`
+          }
+        >
+          <FaUserCog />
+          Dashboard
+        </NavLink>
+
+        <NavLink
+          to="/dashboard/manage-doctors"
+          className={({ isActive }) =>
+            `flex items-center gap-2 w-full btn btn-outline ${isActive ? 'btn-primary ' : ''}`
+          }
+        >
+          <FaTasks />
+          Manage Doctors
+        </NavLink>
+
+        <NavLink
+          to="/dashboard/add-doctor"
+          className={({ isActive }) =>
+            `flex items-center gap-2 w-full btn btn-outline ${isActive ? 'btn-primary ' : ''}`
+          }
+        >
+          <FaPlusCircle />
+          Add Doctor
+        </NavLink>
+
+        <NavLink
+          to="/dashboard/all-users"
+          className={({ isActive }) =>
+            `flex items-center gap-2 w-full btn btn-outline ${isActive ? 'btn-primary ' : ''}`
+          }
+        >
+          <FaUsers />
+          All Users
+        </NavLink>
+      </nav>
+
+        <NavLink
+          to="/dashboard/book-appointments"
+          className={({ isActive }) =>
+            `flex items-center gap-2 w-full btn btn-outline ${isActive ? 'btn-primary ' : ''}`
+          }
+        >
+          <FaUsers />
+          Booked Appointments
+        </NavLink>
+      {/* Booked Appointments Section */}
+      {/* <div>
+        <h3 className="text-lg font-semibold text-primary mb-3">Booked Appointments</h3>
+        <div className="space-y-3">
+          {bookedAppointments.map((appt) => (
+            <div key={appt.id} className="p-3 bg-[#f0fdf4] border border-[#d1fae5] rounded-md shadow-sm">
+              <p className="font-medium">{appt.name}</p>
+              <p className="text-sm text-gray-600 flex items-center gap-2">
+                <FaClock /> {appt.time}
+              </p>
+              <p className="text-sm text-gray-600 flex items-center gap-2">
+                <FaCalendarAlt /> {appt.date}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div> */}
             </> : <>
               <h2 className="text-xl font-bold mb-4">Dashboard</h2>
               <NavLink to="/dashboard/my-appointment" className="btn btn-ghost justify-start gap-2 w-full">
