@@ -6,7 +6,7 @@ import useRole from '../../hooks/useRole';
 import useUser from '../../hooks/useUser';
 
 const AllUsers = () => {
-  const [users] = useUser();
+  const [users, refetch] = useUser();
   const [isRole] = useRole();
   const axiosSecure = useAxiosSecure();
   const [search, setSearch] = useState('');
