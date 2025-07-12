@@ -10,10 +10,13 @@ const BookedAppointment = () => {
   const { data: appointments = [], refetch } = useQuery({
     queryKey: ['appointments'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/appointments');
+      const res = await axiosSecure.get('/appointment');
       return res.data;
     },
   });
+
+
+  console.log(appointments)
 
   const handleCancel = (appointmentId) => {
     Swal.fire({
