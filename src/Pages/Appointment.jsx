@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useContext, useState } from 'react';
 import Calendar from '../Components/calendar';
 import Header from '../Components/Header';
 import useAxiosPublic from '../hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Provider/Authprovider';
 
 const services = [
     {
@@ -53,6 +53,8 @@ const services = [
 
 const Appointment = () => {
     const axiosPublic = useAxiosPublic();
+    const { user } = useContext(AuthContext);
+    console.log(user)
     const [selectedService, setSelectedService] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedPackage, setSelectedPackage] = useState(null);
@@ -78,19 +80,21 @@ const Appointment = () => {
             date: todayStr,
             patientName: bookingInfo.name,
             phone: bookingInfo.phone,
-            email: bookingInfo.email,
+            email: user?.email,
             status: 'pending'
         };
+
+        console.log(appointment)
 
         const res = await axiosPublic.post('/appointment', appointment);
         if (res.data.insertedId) {
             Swal.fire({
-                title: "Registration Successfully!",
+                title: "Appointment Successful!",
                 icon: "success",
                 draggable: true
             });
             setModalOpen(false);
-            setBookingInfo({ name: '', phone: '', email: '' });
+            setBookingInfo({ name: '', phone: '',});
         }
 
     };
@@ -180,13 +184,6 @@ const Appointment = () => {
                                 className="input input-bordered w-full"
                                 value={bookingInfo.phone}
                                 onChange={(e) => setBookingInfo({ ...bookingInfo, phone: e.target.value })}
-                            />
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                className="input input-bordered w-full"
-                                value={bookingInfo.email}
-                                onChange={(e) => setBookingInfo({ ...bookingInfo, email: e.target.value })}
                             />
                             <div className="text-center">
                                 <button
