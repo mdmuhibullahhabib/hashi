@@ -8,6 +8,7 @@ const ManageDoctor = () => {
 
   const axiosSecure = useAxiosSecure();
   const [doctors, refetch] = useDoctor();
+  console.log(doctors)
 
    const handleDeleteDoctor = id => {
     Swal.fire({
@@ -18,7 +19,7 @@ const ManageDoctor = () => {
       confirmButtonText: 'Yes, Delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/users/${id}`)
+        axiosSecure.delete(`/doctors/${id}`)
           .then(res => {
             refetch()
             console.log(res)

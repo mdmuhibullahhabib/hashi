@@ -1,77 +1,161 @@
 import React, { useState } from 'react';
+import { FaSearch, FaTrashAlt, FaUsers } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useRole from '../../hooks/useRole';
+import useUser from '../../hooks/useUser';
 
 const AllUsers = () => {
-  // Sample user data
-  const [users, setUsers] = useState([
-    { id: 1, name: 'debbie.baker@example.com', job: '', favouriteColor: '', isAdmin: false },
-    { id: 2, name: 'nathan.roberts@example.com', job: '', favouriteColor: '', isAdmin: false },
-    { id: 3, name: 'georgia.young@example.com', job: '', favouriteColor: '', isAdmin: false },
-    { id: 4, name: 'debra.holt@example.com', job: '', favouriteColor: '', isAdmin: false },
-    { id: 5, name: 'tim.jennings@example.com', job: '', favouriteColor: '', isAdmin: false },
-    { id: 6, name: 'sara.cruz@example.com', job: '', favouriteColor: '', isAdmin: false },
-    { id: 7, name: 'willie.jennings@example.com', job: '', favouriteColor: '', isAdmin: false },
-  ]);
+  const [users] = useUser();
+  const [isRole] = useRole();
+  const axiosSecure = useAxiosSecure();
+  const [search, setSearch] = useState('');
+  // const [roleFilter, setRoleFilter] = useState('');
 
-  const handleMakeAdmin = (id) => {
-    setUsers(users.map(user =>
-      user.id === id ? { ...user, isAdmin: true } : user
-    ));
+  // const filteredUsers = users.filter(
+  //   (user) =>
+  //     (user.name?.toLowerCase().includes(search.toLowerCase()) ||
+  //       user.email?.toLowerCase().includes(search.toLowerCase())) &&
+  //     (roleFilter === '' || user.role === roleFilter)
+  // );
+
+  const handleMakeAdmin = (user) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `Make ${user.name} an Admin?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, make Admin!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/users/role/${user._id}`, { role: 'admin' }).then((res) => {
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire('Updated!', `${user.name} is now an Admin.`, 'success');
+          }
+        });
+      }
+    });
   };
 
-  const handleRemoveUser = (id) => {
-    setUsers(users.filter(user => user.id !== id));
+  const handleDeleteUser = (user) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `Delete user: ${user.name}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Delete!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/users/${user._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire('Deleted!', 'User has been removed.', 'success');
+          }
+        });
+      }
+    });
   };
+
+  if (!isRole) {
+    return (
+      <div className="p-8 text-center text-red-600 font-semibold">
+        Access Denied: Admins Only
+      </div>
+    );
+  }
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen flex justify-center items-start">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-xl overflow-hidden border border-blue-200">
-        <div className="p-6 bg-white rounded-t-xl">
-          <h2 className="text-xl font-semibold text-gray-800">All Users : {users.length < 10 ? `0${users.length}` : users.length}</h2>
-        </div>
+    <div className="p-6 bg-white rounded shadow">
+      <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+        <FaUsers /> All Users
+      </h2>
 
-        <div className="overflow-x-auto">
-          <table className="table w-full">
-            {/* head */}
-            <thead className="bg-blue-50">
-              <tr className="text-gray-600">
-                <th className="font-medium"></th>
-                <th className="font-medium">NAME</th>
-                <th className="font-medium">Job</th>
-                <th className="font-medium">Favourite Color</th>
-                <th className="font-medium"></th> {/* For actions */}
-              </tr>
-            </thead>
-            <tbody>
-              {users.map(user => (
-                <tr key={user.id} className="border-b border-gray-200 hover:bg-gray-50">
-                  <td className="font-bold text-gray-700">{user.id < 10 ? `0${user.id}` : user.id}</td>
-                  <td className="text-gray-700">{user.name}</td>
-                  <td>{user.job}</td>
-                  <td>{user.favouriteColor}</td>
-                  <td className="flex space-x-2 justify-end pr-4 py-2">
-                    {!user.isAdmin && (
+      {/* Filters */}
+      <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
+        <div className="flex items-center gap-2">
+          <FaSearch />
+          <input
+            type="text"
+            placeholder="Search by name or email"
+            className="input input-bordered w-64"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        {/* <select
+          className="select select-bordered w-60"
+          value={roleFilter}
+          onChange={(e) => setRoleFilter(e.target.value)}
+        >
+          <option value="">All Roles</option>
+          <option value="student">Student</option>
+          <option value="consultant">Consultant</option>
+          <option value="admin">Admin</option>
+        </select> */}
+      </div>
+
+      {/* Users Table */}
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Photo</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.length > 0 ? (
+              users.map((user, index) => (
+                <tr key={user._id}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <img
+                      src={user.photoURL || 'https://via.placeholder.com/40'}
+                      alt="User"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  </td>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td className="capitalize">
+                    {user.role === 'admin' ? (
+                      <span className="badge badge-success">Admin</span>
+                    ) : (
                       <button
-                        className="btn btn-sm bg-green-700 hover:bg-green-800 text-white border-none rounded-md px-4 py-2"
-                        onClick={() => handleMakeAdmin(user.id)}
+                        onClick={() => handleMakeAdmin(user)}
+                        className="btn btn-xs btn-outline"
                       >
                         Make Admin
                       </button>
                     )}
+                  </td>
+                  <td>
                     <button
-                      className="btn btn-sm bg-gray-700 hover:bg-gray-800 text-white border-none rounded-md px-4 py-2"
-                      onClick={() => handleRemoveUser(user.id)}
+                      onClick={() => handleDeleteUser(user)}
+                      className="btn btn-ghost btn-lg"
                     >
-                      Remove User
+                      <FaTrashAlt className="text-red-600" />
                     </button>
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6" className="text-center py-6 text-gray-500">
+                  No users found.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
-}
+};
 
 export default AllUsers;
