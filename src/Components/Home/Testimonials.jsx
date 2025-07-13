@@ -1,20 +1,19 @@
 import React from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
-const testimonials = [
-  {
-    name: 'Anisul Hoque',
-    review: 'Wonderful service! The doctors are very kind and the environment is clean and relaxing.',
-    image: 'https://i.ibb.co/Sn8D0TJ/user1.png',
-  },
-  {
-    name: 'Parbina Hossain',
-    review: 'I was nervous about dental treatment but HASHI made everything comfortable and easy.',
-    image: 'https://i.ibb.co/FxzqHyP/user2.png',
-  },
-];
 
 const Testimonials = () => {
+      const axiosPublic = useAxiosPublic()
+
+        const { data: reviews = [], refetch } = useQuery({
+            queryKey: ['reviews'],
+            queryFn: async () => {
+                const res = await axiosPublic.get('/reviews-random')
+                return res.data;
+            }
+        })
   return (
     <section className="py-16 px-6 bg-base-200">
       <div className="max-w-6xl mx-auto text-center">
@@ -22,10 +21,9 @@ const Testimonials = () => {
         <p className="text-gray-600 mb-10 max-w-xl mx-auto">Real words from real people. Here’s what our satisfied patients have to say about HASHI Dental.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((t, idx) => (
+          {reviews.map((t, idx) => (
             <div key={idx} className="bg-white shadow-lg rounded-xl p-6 text-left">
               <div className="flex items-center gap-4 mb-3">
-                <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover" />
                 <div>
                   <h4 className="text-md font-semibold">{t.name}</h4>
                 </div>

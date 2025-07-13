@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaQuoteLeft } from "react-icons/fa";
 import useReviews from "../../hooks/useReviews";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { AuthContext } from "../../Provider/Authprovider";
 
 const MyReviews = () => {
     const [reviews, refetch] = useReviews();
     const axiosSecure = useAxiosSecure();
     const [open, setOpen] = useState(false);
+    const {user} = useContext(AuthContext);
     const handleSubmit = (e) => {
         e.preventDefault();
         const review = e.target.review.value;
 
         const response = axiosSecure.post('/reviews', {
             review,
+            name: user.displayName,
             date: new Date().toISOString(),
         });
 
