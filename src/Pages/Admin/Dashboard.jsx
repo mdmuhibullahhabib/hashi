@@ -49,9 +49,48 @@ const AdminDashboard = () => {
 
   return (
     <div className="p-4 bg-gray-100 min-h-screen">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-        {/* Cards */}
-        {/* ... same card layout for Doctors, Patients, and Appointments ... */}
+   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        {/* Doctor Card */}
+        <div className="card bg-white shadow-lg rounded-xl p-6 flex flex-col items-start">
+          <div className="flex items-center space-x-3 mb-4">
+            <div className="bg-pink-100 p-3 rounded-full">
+              <FiUser className="text-pink-500 text-2xl" />
+            </div>
+            <span className="text-4xl font-bold text-gray-800">{doctors.length}</span>
+          </div>
+          <p className="text-gray-600 text-lg mb-2">Doctor</p>
+          <div className="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+            <div className="bg-pink-500 h-1.5 rounded-full" style={{ width: '70%' }}></div>
+          </div>
+        </div>
+
+        {/* Patients Card */}
+        <div className="card bg-white shadow-lg rounded-xl p-6 flex flex-col items-start">
+          <div className="flex items-center space-x-3 mb-4">
+            <div className="bg-green-100 p-3 rounded-full">
+              <FiUsers className="text-green-500 text-2xl" />
+            </div>
+            <span className="text-4xl font-bold text-gray-800">{users.length}</span>
+          </div>
+          <p className="text-gray-600 text-lg mb-2">Patients</p>
+          <div className="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+            <div className="bg-green-500 h-1.5 rounded-full" style={{ width: '85%' }}></div>
+          </div>
+        </div>
+
+        {/* Appointment Card */}
+        <div className="card bg-white shadow-lg rounded-xl p-6 flex flex-col items-start">
+          <div className="flex items-center space-x-3 mb-4">
+            <div className="bg-yellow-100 p-3 rounded-full">
+              <FiFileText className="text-yellow-500 text-2xl" />
+            </div>
+            <span className="text-4xl font-bold text-gray-800">{appointments.length}</span>
+          </div>
+          <p className="text-gray-600 text-lg mb-2">Appointment</p>
+          <div className="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+            <div className="bg-yellow-500 h-1.5 rounded-full" style={{ width: '60%' }}></div>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
