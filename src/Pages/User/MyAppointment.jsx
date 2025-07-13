@@ -22,15 +22,6 @@ const MyAppointment = () => {
     <div className="min-h-screen flex">
       <main className="flex-1 bg-gray-50">
         <section className="px-8 py-10">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-semibold">My Appointment</h2>
-            <DatePicker
-              selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              className="border px-3 py-1 rounded cursor-pointer"
-              dateFormat="MMMM d, yyyy"
-            />
-          </div>
 
           <div className="bg-white rounded shadow p-6">
             <table className="w-full text-left border-collapse">
