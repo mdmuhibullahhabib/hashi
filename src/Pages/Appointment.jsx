@@ -83,7 +83,7 @@ const Appointment = () => {
                     icon: 'success',
                     confirmButtonColor: '#3085d6',
                 });
-                navigate=('')
+                navigate=('/dashboard/booked-appointments')
                 setModalOpen(false);
                 setBookingInfo({ name: '', phone: '' });
             } else {
