@@ -1,5 +1,4 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { FaCalendarAlt, FaCheck, FaTrashAlt } from 'react-icons/fa';
@@ -7,11 +6,7 @@ import useBookedAppointment from '../../hooks/useBookedAppointment';
 
 const BookedAppointment = () => {
   const axiosSecure = useAxiosSecure();
-
-  const [appointments] = useBookedAppointment()
-
-
-  console.log(appointments)
+  const [appointments] = useBookedAppointment();
 
   const handleCancel = (appointmentId) => {
     Swal.fire({
