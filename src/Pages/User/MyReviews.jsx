@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaQuoteLeft } from "react-icons/fa";
+import useReviews from "../../hooks/useReviews";
 
 const MyReviews = () => {
+    // const [reviews] = useReviews();
     const [reviews, setReviews] = useState([]);
     const [newReview, setNewReview] = useState("");
     const [open, setOpen] = useState(false);
@@ -10,44 +12,52 @@ const MyReviews = () => {
     // Fetch reviews
     useEffect(() => {
 
-            const mockReviews = [
-        {
-            review: "This service exceeded my expectations. The team was professional and kind.",
-            date: "2025-06-25T10:00:00.000Z",
-        },
-        {
-            review: "Very satisfied with the consultation. Highly recommended!",
-            date: "2025-06-20T14:30:00.000Z",
-        },
-        {
-            review: "Quick response, great communication, and helpful advice.",
-            date: "2025-06-18T09:15:00.000Z",
-        },
-        {
-            review: "Everything went smoothly. Will use the service again in the future.",
-            date: "2025-06-10T16:45:00.000Z",
-        },
-    ];
+        const mockReviews = [
+            {
+                review: "This service exceeded my expectations. The team was professional and kind.",
+                date: "2025-06-25T10:00:00.000Z",
+            },
+            {
+                review: "Very satisfied with the consultation. Highly recommended!",
+                date: "2025-06-20T14:30:00.000Z",
+            },
+            {
+                review: "Quick response, great communication, and helpful advice.",
+                date: "2025-06-18T09:15:00.000Z",
+            },
+            {
+                review: "Everything went smoothly. Will use the service again in the future.",
+                date: "2025-06-10T16:45:00.000Z",
+            },
+        ]
 
-    setReviews(mockReviews);
+        setReviews(mockReviews);
 
         // axios.get("https://your-backend-url.com/api/reviews")
         //     .then(res => setReviews(res.data))
         //     .catch(err => console.error(err));
     }, []);
 
-    const handleSubmit = async () => {
-        if (!newReview.trim()) return;
-            const response = await axios.post("https://doc-house-server-weld.vercel.app/reviews", {
-                review: newReview,
-                date: new Date().toISOString(),
-            });
-            setReviews([...reviews, response.data]);
-            setNewReview("");
-            setOpen(false);
-            console.log(response)
+    const handleSubmit = (data) => {
 
+        console.log("Submitted data:", data);
+
+        // const response = axiosSecure.post('/doctors', {
+        //     ...data,
+        //     date: new Date().toISOString(),
+        // });
+
+        // console.log("Success:", response);
+
+        // Swal.fire({
+        //     title: "Doctor Added Successfully!",
+        //     icon: "success",
+        //     confirmButtonColor: "#3085d6",
+        // });
+
+        // reset();
     };
+
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-10">
@@ -87,14 +97,14 @@ const MyReviews = () => {
 
             {/* Modal using DaisyUI */}
             {open && (
-                <dialog open className="modal modal-open">
+                <form onSubmit={handleSubmit} open className="modal modal-open">
                     <div className="modal-box">
                         <h3 className="font-bold text-lg mb-4">Write a Review</h3>
                         <textarea
                             className="textarea textarea-bordered w-full min-h-[120px]"
                             placeholder="Share your experience..."
-                            value={newReview}
-                            onChange={(e) => setNewReview(e.target.value)}
+                            type="text"
+                            name="review"
                         />
                         <div className="modal-action">
                             <button
@@ -104,14 +114,13 @@ const MyReviews = () => {
                                 Cancel
                             </button>
                             <button
-                                onClick={handleSubmit}
                                 className="btn btn-primary"
                             >
                                 Submit
                             </button>
                         </div>
                     </div>
-                </dialog>
+                </form>
             )}
         </div>
     );
