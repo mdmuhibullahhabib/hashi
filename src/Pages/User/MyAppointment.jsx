@@ -6,17 +6,6 @@ const MyAppointment = () => {
   const [appointments] = useBookedAppointment();
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  // Filter appointments by selected date (ignoring time)
-  const filteredAppointments = useMemo(() => {
-    return appointments.filter(appt => {
-      const apptDate = new Date(appt.date);
-      return (
-        apptDate.getFullYear() === selectedDate.getFullYear() &&
-        apptDate.getMonth() === selectedDate.getMonth() &&
-        apptDate.getDate() === selectedDate.getDate()
-      );
-    });
-  }, [appointments, selectedDate]);
 
   return (
     <div className="min-h-screen flex">
@@ -34,8 +23,8 @@ const MyAppointment = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredAppointments.length > 0 ? (
-                  filteredAppointments.map((appt, idx) => (
+                {appointments.length > 0 ? (
+                  appointments.map((appt, idx) => (
                     <tr key={appt._id || idx} className="border-t">
                       <td className="py-2 px-4">{idx + 1}</td>
                       <td className="py-2 px-4">{appt.name}</td>
