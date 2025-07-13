@@ -3,17 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { FaCalendarAlt, FaCheck, FaTrashAlt } from 'react-icons/fa';
+import useBookedAppointment from '../../hooks/useBookedAppointment';
 
 const BookedAppointment = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: appointments = [], refetch } = useQuery({
-    queryKey: ['appointments'],
-    queryFn: async () => {
-      const res = await axiosSecure.get('/appointment');
-      return res.data;
-    },
-  });
+  const [appointments] = useBookedAppointment()
 
 
   console.log(appointments)
@@ -76,13 +71,12 @@ const BookedAppointment = () => {
                   <td>{appt.time}</td>
                   <td>
                     <span
-                      className={`badge ${
-                        appt.status === 'completed'
+                      className={`badge ${appt.status === 'completed'
                           ? 'badge-success'
                           : appt.status === 'cancelled'
-                          ? 'badge-error'
-                          : 'badge-info'
-                      }`}
+                            ? 'badge-error'
+                            : 'badge-info'
+                        }`}
                     >
                       {appt.status}
                     </span>
