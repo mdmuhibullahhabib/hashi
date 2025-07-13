@@ -48,7 +48,7 @@ const AdminDashboard = () => {
             <div className="bg-green-100 p-3 rounded-full">
               <FiUsers className="text-green-500 text-2xl" />
             </div>
-            <span className="text-4xl font-bold text-gray-800">487</span>
+            <span className="text-4xl font-bold text-gray-800">{users.length}</span>
           </div>
           <p className="text-gray-600 text-lg mb-2">Patients</p>
           <div className="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
