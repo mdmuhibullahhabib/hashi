@@ -39,6 +39,13 @@ const MyReviews = () => {
     }, []);
 
     const handleSubmit = (data) => {
+      e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const image = form.image.value;
+
+    const userData = { name, email, image }
 
         console.log("Submitted data:", data);
 
