@@ -1,68 +1,32 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { FaQuoteLeft } from "react-icons/fa";
 import useReviews from "../../hooks/useReviews";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const MyReviews = () => {
-    // const [reviews] = useReviews();
-    const [reviews, setReviews] = useState([]);
-    const [newReview, setNewReview] = useState("");
+    const [reviews] = useReviews();
+    const axiosPublic = useAxiosPublic();
     const [open, setOpen] = useState(false);
 
-    // Fetch reviews
-    useEffect(() => {
-
-        const mockReviews = [
-            {
-                review: "This service exceeded my expectations. The team was professional and kind.",
-                date: "2025-06-25T10:00:00.000Z",
-            },
-            {
-                review: "Very satisfied with the consultation. Highly recommended!",
-                date: "2025-06-20T14:30:00.000Z",
-            },
-            {
-                review: "Quick response, great communication, and helpful advice.",
-                date: "2025-06-18T09:15:00.000Z",
-            },
-            {
-                review: "Everything went smoothly. Will use the service again in the future.",
-                date: "2025-06-10T16:45:00.000Z",
-            },
-        ]
-
-        setReviews(mockReviews);
-
-        // axios.get("https://your-backend-url.com/api/reviews")
-        //     .then(res => setReviews(res.data))
-        //     .catch(err => console.error(err));
-    }, []);
-
-    const handleSubmit = (data) => {
+    const handleSubmit = (e) => {
       e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const image = form.image.value;
+    const review = e.target.review.value;
 
-    const userData = { name, email, image }
+        const response = axiosSecure.post('/reviews', {
+            review,
+            date: new Date().toISOString(),
+        });
 
-        console.log("Submitted data:", data);
+        console.log("Success:", response);
 
-        // const response = axiosSecure.post('/doctors', {
-        //     ...data,
-        //     date: new Date().toISOString(),
-        // });
+        Swal.fire({
+            title: "Doctor Added Successfully!",
+            icon: "success",
+            confirmButtonColor: "#3085d6",
+        });
 
-        // console.log("Success:", response);
-
-        // Swal.fire({
-        //     title: "Doctor Added Successfully!",
-        //     icon: "success",
-        //     confirmButtonColor: "#3085d6",
-        // });
-
-        // reset();
+        reset();
     };
 
 
