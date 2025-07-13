@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { FaQuoteLeft } from "react-icons/fa";
 import useReviews from "../../hooks/useReviews";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyReviews = () => {
-    const [reviews] = useReviews();
-    const axiosPublic = useAxiosPublic();
+    const [reviews, refetch] = useReviews();
+    const axiosSecure = useAxiosSecure();
     const [open, setOpen] = useState(false);
 
     const handleSubmit = (e) => {
@@ -21,12 +21,12 @@ const MyReviews = () => {
         console.log("Success:", response);
 
         Swal.fire({
-            title: "Doctor Added Successfully!",
+            title: " Thanks For review!",
             icon: "success",
             confirmButtonColor: "#3085d6",
         });
-
-        reset();
+        setOpen(false)
+        refetch();
     };
 
 
