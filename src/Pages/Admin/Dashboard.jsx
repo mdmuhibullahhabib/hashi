@@ -64,7 +64,7 @@ const AdminDashboard = () => {
             <div className="bg-yellow-100 p-3 rounded-full">
               <FiFileText className="text-yellow-500 text-2xl" />
             </div>
-            <span className="text-4xl font-bold text-gray-800">95</span>
+            <span className="text-4xl font-bold text-gray-800">{appointments.length}</span>
           </div>
           <p className="text-gray-600 text-lg mb-2">Appointment</p>
           <div className="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
