@@ -71,7 +71,7 @@ const Appointment = () => {
         setModalOpen(true);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         const appointment = {
@@ -86,7 +86,7 @@ const Appointment = () => {
 
         console.log(appointment)
 
-        const res = await axiosPublic.post('/appointment', appointment);
+        const res = axiosPublic.post('/appointment', appointment);
         if (res.data.insertedId) {
             Swal.fire({
                 title: "Appointment Successful!",
@@ -94,7 +94,6 @@ const Appointment = () => {
                 draggable: true
             });
             setModalOpen(false);
-            setBookingInfo({ name: '', phone: '',});
         }
 
     };

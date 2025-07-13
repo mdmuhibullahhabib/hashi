@@ -4,8 +4,6 @@ import useBookedAppointment from '../../hooks/useBookedAppointment';
 
 const MyAppointment = () => {
   const [appointments] = useBookedAppointment();
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
 
   return (
     <div className="min-h-screen flex">
