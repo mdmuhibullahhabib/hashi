@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import useBookedAppointment from '../../hooks/useBookedAppointment';
 
-const dummyAppointments = [
-    { id: 1, name: 'John Doe', service: 'Teeth Orthodontics', time: '08.30 AM - 09.00 AM', date: '2022-05-10' },
-    { id: 2, name: 'John Doe', service: 'Teeth Orthodontics', time: '08.30 AM - 09.00 AM', date: '2022-05-10' },
-    { id: 3, name: 'John Doe', service: 'Teeth Orthodontics', time: '08.30 AM - 09.00 AM', date: '2022-05-10' },
-    { id: 4, name: 'John Doe', service: 'Teeth Orthodontics', time: '08.30 AM - 09.00 AM', date: '2022-05-10' },
-    { id: 5, name: 'Jane Smith', service: 'Root Canal', time: '10.00 AM - 10.30 AM', date: '2022-05-11' },
-];
 
 const MyAppointment = () => {
+    const [appointments] = useBookedAppointment();
     const [selectedDate, setSelectedDate] = useState(new Date('2022-05-10'));
 
     const formattedDate = selectedDate.toISOString().split('T')[0];

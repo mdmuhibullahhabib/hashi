@@ -8,10 +8,9 @@ const MyReviews = () => {
     const [reviews, refetch] = useReviews();
     const axiosSecure = useAxiosSecure();
     const [open, setOpen] = useState(false);
-
     const handleSubmit = (e) => {
-      e.preventDefault();
-    const review = e.target.review.value;
+        e.preventDefault();
+        const review = e.target.review.value;
 
         const response = axiosSecure.post('/reviews', {
             review,
@@ -33,7 +32,7 @@ const MyReviews = () => {
     return (
         <div className="max-w-5xl mx-auto px-4 py-10">
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-3xl font-bold text-gray-800">My Reviews</h2>
+                <h2 className="text-3xl font-bold text-gray-800">Reviews</h2>
                 <button
                     className="btn btn-primary"
                     onClick={() => setOpen(true)}
