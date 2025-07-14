@@ -1,29 +1,11 @@
 import React from 'react';
 import { FaStar, FaQuoteRight } from 'react-icons/fa';
 import Header from '../Components/Header';
+import useReviews from '../hooks/useReviews';
 
-const reviews = [
-  {
-    name: "Ayesha Rahman",
-    photo: "https://randomuser.me/api/portraits/women/65.jpg",
-    rating: 5,
-    feedback: "Absolutely wonderful! The doctors are kind, skilled, and made me feel at ease. My teeth look better than ever!",
-  },
-  {
-    name: "Tanvir Alam",
-    photo: "https://randomuser.me/api/portraits/men/32.jpg",
-    rating: 4,
-    feedback: "Great experience! The waiting time was short, and the procedure was painless. Highly recommended!",
-  },
-  {
-    name: "Nasima Akter",
-    photo: "https://randomuser.me/api/portraits/women/22.jpg",
-    rating: 5,
-    feedback: "HASHI Dental changed my perspective about dentists. Clean environment and expert service!",
-  },
-];
 
 const Reviews = () => {
+  const [reviews, refetch] = useReviews()
   return (
        <div className="">
           <Header

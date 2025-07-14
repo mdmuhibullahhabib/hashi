@@ -19,7 +19,6 @@ const MyReviews = () => {
             name: user.displayName,
             date: new Date().toISOString(),
         });
-
         console.log("Success:", response);
 
         Swal.fire({
