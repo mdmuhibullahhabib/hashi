@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 
 
 const Testimonials = () => {
-      const axiosPublic = useAxiosPublic()
+      const axiosPublic = useAxiosPublic();
 
         const { data: reviews = [] } = useQuery({
             queryKey: ['reviews'],
