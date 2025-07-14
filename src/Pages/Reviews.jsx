@@ -4,7 +4,7 @@ import Header from '../Components/Header';
 import useReviews from '../hooks/useReviews';
 
 const Reviews = () => {
-  const [reviews, refetch] = useReviews();
+  const [reviews, ] = useReviews();
 
   return (
     <div>
