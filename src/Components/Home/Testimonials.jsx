@@ -7,13 +7,14 @@ import { useQuery } from '@tanstack/react-query';
 const Testimonials = () => {
       const axiosPublic = useAxiosPublic()
 
-        const { data: reviews = [], refetch } = useQuery({
+        const { data: reviews = [] } = useQuery({
             queryKey: ['reviews'],
             queryFn: async () => {
                 const res = await axiosPublic.get('/reviews-random')
                 return res.data;
             }
         })
+
   return (
     <section className="py-16 px-6 bg-base-200">
       <div className="max-w-6xl mx-auto text-center">
