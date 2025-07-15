@@ -10,6 +10,7 @@ const MyReviews = () => {
     const axiosSecure = useAxiosSecure();
     const [open, setOpen] = useState(false);
     const {user} = useContext(AuthContext);
+    console.log(reviews)
     const handleSubmit = (e) => {
         e.preventDefault();
         const review = e.target.review.value;

@@ -17,7 +17,7 @@ const BookedAppointment = () => {
       confirmButtonText: 'Yes, cancel it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/appointments/${appointmentId}`).then((res) => {
+        axiosSecure.delete(`/appointment/${appointmentId}`).then((res) => {
           if (res.data.deletedCount > 0) {
             Swal.fire('Cancelled!', 'The appointment has been cancelled.', 'success');
             refetch();
