@@ -12,10 +12,8 @@ const DoctorProfile = () => {
 
   const { id } = useParams();
   const [doctors, refetch] = useDoctor();
-  console.log(id, doctors)
 
   const doctor = doctors.find(doc => doc._id === id);
-  console.log(doctor)
 
 
   const TabButton = ({ label }) => (
