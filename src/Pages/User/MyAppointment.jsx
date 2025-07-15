@@ -3,6 +3,7 @@ import useBookedAppointment from '../../hooks/useBookedAppointment';
 
 const MyAppointment = () => {
   const [appointments] = useBookedAppointment();
+  console.log(appointments)
 
   return (
     <div className="min-h-screen flex">

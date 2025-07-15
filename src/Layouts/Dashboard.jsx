@@ -88,7 +88,7 @@ const Dashboard = () => {
                   }`
                 }
               >
-                <FaPlusCircle className="text-lg" /> My Review
+                <FaPlusCircle className="text-lg" />Reviews
               </NavLink>
             </>
           }
