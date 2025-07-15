@@ -56,6 +56,10 @@ const Router = createBrowserRouter([
                 path: "/contact",
                 element: <Contact></Contact>
             },
+                        {
+                path: "/dashboard/my-appointment",
+                element: <MyAppointment></MyAppointment>
+            },
         ]
     },
     {
@@ -84,10 +88,6 @@ const Router = createBrowserRouter([
                 element: <AdminDashboard></AdminDashboard>
             },
             // user
-            {
-                path: "/dashboard/my-appointment",
-                element: <MyAppointment></MyAppointment>
-            },
             {
                 path: "/dashboard/my-reviews",
                 element: <MyReviews></MyReviews>

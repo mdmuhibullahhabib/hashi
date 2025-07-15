@@ -8,8 +8,8 @@ import useRole from '../hooks/useRole';
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
-const [isRole] = useRole()
-  
+  const [isRole] = useRole()
+
   const handleLogout = () => {
     logOut()
       .then(() => { })
@@ -32,6 +32,13 @@ const [isRole] = useRole()
           <Link to="/appointment" className="hover:bg-orange-400">Appointment</Link>
           <Link to="/reviews" className="hover:text-orange-400">Reviews</Link>
           <Link to="/contact" className="hover:text-orange-400">Contact Us</Link>
+          {
+            isRole === 'admin' ? <>
+              <Link to="/dashboard/admin-dashboard">Dashboard</Link>
+            </> : <>
+              <Link to="/dashboard/my-appointment">Dashboard</Link>
+            </>
+          }
 
           {/* Conditional Auth */}
           {user && user?.email ? (
@@ -50,12 +57,12 @@ const [isRole] = useRole()
                   <p className="text-sm text-gray-500">{user?.email}</p>
                 </li>
                 {
-                    isRole === 'admin' ? <>
-                      <li><Link to="/dashboard/admin-dashboard">Dashboard</Link></li>
-                    </> : <>
-                      <li><Link to="/dashboard/my-appointment">Dashboard</Link></li>
-                    </>
-                  }
+                  isRole === 'admin' ? <>
+                    <li><Link to="/dashboard/admin-dashboard">Dashboard</Link></li>
+                  </> : <>
+                    <li><Link to="/dashboard/my-appointment">Dashboard</Link></li>
+                  </>
+                }
                 <li><button onClick={handleLogout}>Logout</button></li>
               </ul>
             </div>
