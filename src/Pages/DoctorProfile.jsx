@@ -11,7 +11,7 @@ const DoctorProfile = () => {
   const [activeTab, setActiveTab] = useState('Overview');
 
   const { id } = useParams();
-  const [doctors, refetch] = useDoctor();
+  const [doctors] = useDoctor();
 
   const doctor = doctors.find(doc => doc._id === id);
 
