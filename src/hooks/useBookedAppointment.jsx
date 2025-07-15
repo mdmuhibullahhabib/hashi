@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from './useAxiosSecure';
+import { AuthContext } from '../Provider/Authprovider';
 
 const useBookedAppointment = () => {
   const axiosSecure = useAxiosSecure();

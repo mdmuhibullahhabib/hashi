@@ -75,7 +75,6 @@ const Appointment = () => {
             status: 'pending',
         };
 
-        try {
             const res = await axiosPublic.post('/appointment', appointment);
             if (res.data.insertedId) {
                 Swal.fire({
@@ -92,14 +91,6 @@ const Appointment = () => {
                     icon: 'error',
                 });
             }
-        } catch (err) {
-            console.error(err);
-            Swal.fire({
-                title: 'Submission Failed',
-                icon: 'error',
-                text: err.message,
-            });
-        }
     };
 
     return (
