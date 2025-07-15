@@ -6,12 +6,11 @@ import { AuthContext } from '../Provider/Authprovider';
 const useBookedAppointment = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
-
+console.log(user)
   const { data: appointments = [], refetch } = useQuery({
-    enabled: !!user?.email,
     queryKey: ['appointments', user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/appointment?email=${user.email}`);
+      const res = await axiosSecure.get(`/appointments?email=${user?.email}`);
       return res.data;
     },
   });
