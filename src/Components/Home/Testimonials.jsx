@@ -14,6 +14,7 @@ const Testimonials = () => {
                 return res.data;
             }
         })
+        console.log(reviews)
 
   return (
     <section className="py-16 px-6 bg-base-200">
