@@ -10,9 +10,7 @@ const useBookedAppointment = () => {
   const { data: appointments = [], refetch } = useQuery({
     queryKey: ['appointments'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/appointment');
-      const res = await axiosSecure.get(`/booked?email=${user.email}`)
-
+      const res = await axiosSecure.get(`/appointment?email=${user.email}`)
       return res.data;
     },
   });
