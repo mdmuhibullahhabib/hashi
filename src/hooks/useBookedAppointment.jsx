@@ -14,7 +14,6 @@ console.log(user)
       return res.data;
     },
   });
-  console.log(appointments)
   return [appointments, refetch];
 };
 
