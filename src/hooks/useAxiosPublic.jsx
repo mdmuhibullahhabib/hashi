@@ -6,7 +6,7 @@ import React from 'react'
 })
 
 const useAxiosPublic = () => {
-  return axiosPublic
+  return axiosPublic;
 }
 
 export default useAxiosPublic;
