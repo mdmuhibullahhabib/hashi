@@ -9,7 +9,7 @@ const MyReviews = () => {
     const [reviews, refetch] = useReviews();
     const axiosSecure = useAxiosSecure();
     const [open, setOpen] = useState(false);
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     console.log(reviews)
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -55,6 +55,7 @@ const MyReviews = () => {
                             <div className="flex items-start gap-3">
                                 <FaQuoteLeft className="text-primary text-xl mt-1" />
                                 <div>
+                                    <p className="text-gray-800 mb-1 font-semibold">{review.name}</p> {/* 👈 Added Name */}
                                     <p className="text-gray-800">{review.review}</p>
                                     <p className="text-sm text-gray-400 mt-2">
                                         {new Date(review.date).toLocaleString()}
@@ -67,6 +68,7 @@ const MyReviews = () => {
                     <p className="text-gray-500">No reviews yet. Be the first to write one!</p>
                 )}
             </div>
+
 
             {/* Modal using DaisyUI */}
             {open && (
