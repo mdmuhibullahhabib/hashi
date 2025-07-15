@@ -34,9 +34,9 @@ const Navbar = () => {
           <Link to="/contact" className="hover:text-orange-400">Contact Us</Link>
           {
             isRole === 'admin' ? <>
-              <Link to="/dashboard/admin-dashboard">Dashboard</Link>
+              <Link className="hover:text-orange-400" to="/dashboard/admin-dashboard">Dashboard</Link>
             </> : <>
-              <Link to="/dashboard/my-appointment">Dashboard</Link>
+              <Link className="hover:text-orange-400" to="/dashboard/my-appointment">My Appointment</Link>
             </>
           }
 

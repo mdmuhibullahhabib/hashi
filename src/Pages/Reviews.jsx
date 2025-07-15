@@ -5,7 +5,6 @@ import useReviews from '../hooks/useReviews';
 
 const Reviews = () => {
   const [reviews] = useReviews();
-
   return (
     <div>
       <Header maps="Reviews" name="Reviews" />
