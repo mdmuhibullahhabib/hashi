@@ -1,22 +1,22 @@
-import React, { useContext } from 'react'
-import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from './useAxiosSecure';
 import { AuthContext } from '../Provider/Authprovider';
 
 const useBookedAppointment = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useContext(AuthContext)
-
+  const { user } = useContext(AuthContext);
 
   const { data: appointments = [], refetch } = useQuery({
-    queryKey: ['appointments'],
+    enabled: !!user?.email,
+    queryKey: ['appointments', user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/appointment?email=${user.email}`)
+      const res = await axiosSecure.get(`/appointment?email=${user.email}`);
       return res.data;
     },
   });
   console.log(appointments)
-  return [appointments, refetch]
-}
+  return [appointments, refetch];
+};
 
 export default useBookedAppointment;
