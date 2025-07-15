@@ -55,7 +55,7 @@ const MyReviews = () => {
                             <div className="flex items-start gap-3">
                                 <FaQuoteLeft className="text-primary text-xl mt-1" />
                                 <div>
-                                    <p className="text-gray-800 mb-1 font-semibold">{review.name}</p> {/* 👈 A
+                                    <p className="text-gray-800 mb-1 font-semibold">{review.name}</p>
                                     <p className="text-gray-800">{review.review}</p>
                                     <p className="text-sm text-gray-400 mt-2">
                                         {new Date(review.date).toLocaleString()}
