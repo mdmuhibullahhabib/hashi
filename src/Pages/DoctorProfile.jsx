@@ -12,7 +12,7 @@ const DoctorProfile = () => {
 
   const { id } = useParams();
   const [doctors] = useDoctor();
-  consol
+  conso
 
   const doctor = doctors.find(doc => doc._id === id);
 
