@@ -64,7 +64,7 @@ const About = () => {
                 </div>
 
                 {/* Team Section */}
-                <div className="py-16 px-6 max-w-6xl mx-auto text-center">
+                <div className="py-16 px-6 max-w-6xl er">
 
                 </div>
 
