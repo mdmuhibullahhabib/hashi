@@ -65,8 +65,6 @@ const About = () => {
 
                 {/* Team Section */}
                 <div className="py-16 px-6 max-w-6xl mx-auto text-center">
-                    <h2 className="text-3xl font-bold text-primary mb-6">Meet Our Team</h2>
- 
 
                 </div>
 
