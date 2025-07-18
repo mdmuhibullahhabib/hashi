@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaSmile, FaHeartbeat, FaTooth, FaUserMd } from 'react-icons/fa';
 import Header from '../Components/Header';
+import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
@@ -67,7 +68,7 @@ const About = () => {
                 <div className="bg-accent text-white text-center py-12">
                     <h3 className="text-3xl font-bold mb-3">Ready to Smile Brighter?</h3>
                     <p className="mb-5">Schedule your appointment today with one of our expert dentists.</p>
-                    < className="btn btn-outline text-white border-white hover:bg-white hover:text-accent">Book an Appointment</button>
+                    <Link className="btn btn-outline text-white border-white hover:bg-white hover:text-accent">Book an Appointment</Link>
                 </div>
             </section>
         </div>
