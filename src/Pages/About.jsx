@@ -69,8 +69,6 @@ const About = () => {
                     <p className="text-gray-600 mb-10">
                         Our family of dentists, nurses, and care coordinators bring not only expertise — but compassion to your care.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-6">
-                        <img src="https://i.ibb.co/zPwF0rj/dentist2.png" className="w-36 h-36 object-cover rounded-full border-4 border-accent" />
 
                 </div>
 
