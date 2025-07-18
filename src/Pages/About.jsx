@@ -64,7 +64,7 @@ const About = () => {
                 </div>
 
                 {/* Team Section */}
-                <div className="py-16 px-6">
+                <div className="px-6">
 
                 </div>
 
