@@ -67,7 +67,7 @@ const About = () => {
                 <div className="bg-accent text-white text-center py-12">
                     <h3 className="text-3xl font-bold mb-3">Ready to Smile Brighter?</h3>
                     <p className="mb-5">Schedule your appointment today with one of our expert dentists.</p>
-                    <button className="btn btn-outline text-white border-white hover:bg-white hover:text-accent">Book an Appointment</button>
+                    < className="btn btn-outline text-white border-white hover:bg-white hover:text-accent">Book an Appointment</button>
                 </div>
             </section>
         </div>
