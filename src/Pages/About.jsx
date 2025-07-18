@@ -21,7 +21,7 @@ const About = () => {
                 {/* Who We Are */}
                 <div className="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-12 items-center">
                     <img
-                        src=""
+                        src="https://i.ibb.co/Qv93DmyP/about-us-information-service-sharing-join-concept.jpg"
                         alt="About Us Doctor"
                         className="rounded-xl w-full max-w-sm mx-auto"
                     />
