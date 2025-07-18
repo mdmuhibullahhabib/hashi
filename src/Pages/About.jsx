@@ -66,9 +66,7 @@ const About = () => {
                 {/* Team Section */}
                 <div className="py-16 px-6 max-w-6xl mx-auto text-center">
                     <h2 className="text-3xl font-bold text-primary mb-6">Meet Our Team</h2>
-                    <p className="text-gray-600 mb-10">
-                        Our family of dentists, nurses, and care coordinators bring not only expertise — but compassion to your care.
-                    </p>
+ 
 
                 </div>
 
