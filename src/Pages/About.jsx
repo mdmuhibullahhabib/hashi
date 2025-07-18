@@ -11,13 +11,6 @@ const About = () => {
                 name={"About"}
             ></Header>
             <section className="bg-base-100 text-gray-800">
-                {/* Hero */}
-                <div className="bg-gradient-to-r from-accent via-white to-accent/30 py-20 px-6 text-center">
-                    <h1 className="text-5xl font-bold text-primary mb-4">About HASHI Dental</h1>
-                    <p className="text-lg max-w-3xl mx-auto text-gray-600">
-                        Bringing brighter smiles to life. At HASHI, we believe dental care should be modern, gentle, and personal.
-                    </p>
-                </div>
 
                 {/* Who We Are */}
                 <div className="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-12 items-center">
