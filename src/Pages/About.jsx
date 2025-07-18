@@ -71,9 +71,7 @@ const About = () => {
                     </p>
                     <div className="flex flex-wrap justify-center gap-6">
                         <img src="https://i.ibb.co/zPwF0rj/dentist2.png" className="w-36 h-36 object-cover rounded-full border-4 border-accent" />
-                        <img src="https://i.ibb.co/1rYjYfY/dentist1.png" className="w-36 h-36 object-cover rounded-full border-4 border-accent" />
-                        <img src="https://i.ibb.co/GHYjptK/dentist3.png" className="w-36 h-36 object-cover rounded-full border-4 border-accent" />
-                    </div>
+
                 </div>
 
                 {/* Call to Action */}
