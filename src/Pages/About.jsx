@@ -63,7 +63,7 @@ const About = () => {
                     </div>
                 </div>
 
-                {/* Team  */}
+                {/*   */}
                 {/* Call to Action */}
                 <div className="bg-accent text-white text-center py-12">
                     <h3 className="text-3xl font-bold mb-3">Ready to Smile Brighter?</h3>
