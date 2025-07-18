@@ -64,8 +64,6 @@ const About = () => {
                 </div>
 
                 {/* Team Section */}
-                <div className="px-6">
-
                 </div>
 
                 {/* Call to Action */}
